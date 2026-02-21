@@ -1,14 +1,17 @@
 {
-  "name": "server",
+  "name": "vless-server",
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
+    "start": "node server.js",
     "pm2": "pm2 start server.mjs --name vless-server"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["vless"],
+  "author": "oli liu",
   "license": "ISC",
-  "description": ""
+  "description": "vless",
+  "dependencies": {
+    "ws": "^8.19.0"
+  }
 }
