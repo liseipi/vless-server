@@ -12,12 +12,8 @@ module.exports = {
             max_memory_restart: '1G',
             env: {
                 NODE_ENV: 'production',
-                PORT: 8080,
+                PORT: 2053,
                 HOST: '0.0.0.0',
-                TLS_CERT: '/etc/letsencrypt/live/vs.musicses.vip/fullchain.pem',
-                TLS_KEY: '/etc/letsencrypt/live/vs.musicses.vip/privkey.pem',
-                DEBUG: 'false',
-                WS_PATH: '/vs',
                 UUID: '55a95ae1-4ae8-4461-8484-457279821b40'
             }
         }
