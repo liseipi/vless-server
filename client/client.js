@@ -4,27 +4,27 @@ import { WebSocket } from "ws";
 import { URL } from "url";
 
 // ── 配置 ─────────────────────────────────────────────────────────────────────
-const CFG = {
-  server:   "broad.aicms.dpdns.org",
-  port:     443,
-  uuid:     "55a95ae1-4ae8-4461-8484-457279821b40",
-  path:     "/?ed=2560",
-  sni:      "broad.aicms.dpdns.org",
-  wsHost:   "broad.aicms.dpdns.org",
-  listenPort: 1088,
-  rejectUnauthorized: false,
-};
-
 // const CFG = {
-//   server:     "vs.musicses.vip",
-//   port:       443,
-//   uuid:       "55a95ae1-4ae8-4461-8484-457279821b40",
-//   path:       "/?ed=2560",
-//   sni:        "vs.musicses.vip",
-//   wsHost:     "vs.musicses.vip",
+//   server:   "broad.aicms.dpdns.org",
+//   port:     443,
+//   uuid:     "55a95ae1-4ae8-4461-8484-457279821b40",
+//   path:     "/?ed=2560",
+//   sni:      "broad.aicms.dpdns.org",
+//   wsHost:   "broad.aicms.dpdns.org",
 //   listenPort: 1088,
 //   rejectUnauthorized: false,
 // };
+
+const CFG = {
+  server:     "vs.musicses.vip",
+  port:       443,
+  uuid:       "55a95ae1-4ae8-4461-8484-457279821b40",
+  path:       "/?ed=2560",
+  sni:        "vs.musicses.vip",
+  wsHost:     "vs.musicses.vip",
+  listenPort: 1088,
+  rejectUnauthorized: false,
+};
 
 // ── VLESS 请求头构造 ──────────────────────────────────────────────────────────
 
