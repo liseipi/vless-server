@@ -12,7 +12,8 @@ import { URL } from "url";
 //   sni:      "broad.aicms.dpdns.org",
 //   wsHost:   "broad.aicms.dpdns.org",
 //   listenPort: 1088,
-//   rejectUnauthorized: false,
+//   security:   "none",   // "tls" 或 "none"
+//   rejectUnauthorized: false, // false = 允许自签名证书
 // };
 
 const CFG = {
@@ -23,7 +24,8 @@ const CFG = {
   sni:        "vss.musicses.vip",
   wsHost:     "vss.musicses.vip",
   listenPort: 1099,
-  rejectUnauthorized: false,
+  security:   "tls",   // "tls" 或 "none"
+  rejectUnauthorized: false, // false = 允许自签名证书
 };
 
 // ── VLESS 请求头构造 ──────────────────────────────────────────────────────────
@@ -75,15 +77,17 @@ function ipv6ToBytes(addr) {
 // ── 开隧道 ────────────────────────────────────────────────────────────────────
 
 function buildWsUrl() {
-  // 与 Swift VlessTunnel.swift 的 URLComponents 处理逻辑对齐：
+  // 与 Swift VlessTunnel.swift 逻辑对齐：
+  // security=="tls" 或 port==443 时用 wss，否则用 ws
+  const scheme = (CFG.security === "tls" || CFG.port === 443) ? "wss" : "ws";
   // path 中若含 ?，拆出 query 部分单独处理，避免被 ws 库二次编码
   const qIdx = CFG.path.indexOf("?");
   if (qIdx !== -1) {
     const p = CFG.path.slice(0, qIdx);
     const q = CFG.path.slice(qIdx + 1);
-    return `wss://${CFG.server}:${CFG.port}${p}?${q}`;
+    return `${scheme}://${CFG.server}:${CFG.port}${p}?${q}`;
   }
-  return `wss://${CFG.server}:${CFG.port}${CFG.path}`;
+  return `${scheme}://${CFG.server}:${CFG.port}${CFG.path}`;
 }
 
 function openTunnel(cb) {
