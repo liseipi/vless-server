@@ -4,29 +4,41 @@ import { WebSocket } from "ws";
 import { URL } from "url";
 
 // ── 配置 ─────────────────────────────────────────────────────────────────────
+const CFG = {
+  server:   "broad.aicms.dpdns.org",
+  port:     443,
+  uuid:     "55a95ae1-4ae8-4461-8484-457279821b40",
+  path:     "/?ed=2560",
+  sni:      "broad.aicms.dpdns.org",
+  wsHost:   "broad.aicms.dpdns.org",
+  listenPort: 1099,
+  security:   "none",   // "tls" 或 "none"
+  rejectUnauthorized: false, // false = 允许自签名证书
+};
+
 // const CFG = {
-//   server:   "broad.aicms.dpdns.org",
-//   port:     443,
-//   uuid:     "55a95ae1-4ae8-4461-8484-457279821b40",
-//   path:     "/?ed=2560",
-//   sni:      "broad.aicms.dpdns.org",
-//   wsHost:   "broad.aicms.dpdns.org",
-//   listenPort: 1088,
-//   security:   "none",   // "tls" 或 "none"
+//   server:     "vss.musicses.vip",
+//   port:       443,
+//   uuid:       "55a95ae1-4ae8-4461-8484-457279821b40",
+//   path:       "/?ed=2560",
+//   sni:        "vss.musicses.vip",
+//   wsHost:     "vss.musicses.vip",
+//   listenPort: 1099,
+//   security:   "tls",   // "tls" 或 "none"
 //   rejectUnauthorized: false, // false = 允许自签名证书
 // };
 
-const CFG = {
-  server:     "vss.musicses.vip",
-  port:       443,
-  uuid:       "55a95ae1-4ae8-4461-8484-457279821b40",
-  path:       "/?ed=2560",
-  sni:        "vss.musicses.vip",
-  wsHost:     "vss.musicses.vip",
-  listenPort: 1099,
-  security:   "tls",   // "tls" 或 "none"
-  rejectUnauthorized: false, // false = 允许自签名证书
-};
+// const CFG = {
+//   server:     "www.gzdooh.com.cn",           // ← 改成你的 B 主机域名
+//   port:       443,
+//   uuid:       "55a95ae1-4ae8-4461-8484-457279821b40",
+//   path:       "/vs?ed=2560",               // ← 使用 /vs 路径
+//   sni:        "www.gzdooh.com.cn",           // ← 改成你的 B 主机域名
+//   wsHost:     "www.gzdooh.com.cn",           // ← 改成你的 B 主机域名
+//   listenPort: 1099,
+//   security:   "tls",    // "tls" 或 "none"
+//   rejectUnauthorized: false, // false = 允许自签名证书
+// };
 
 // ── VLESS 请求头构造 ──────────────────────────────────────────────────────────
 
