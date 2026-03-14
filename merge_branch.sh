@@ -15,8 +15,6 @@ if [ "$SOURCE_BRANCH" = "$TARGET_BRANCH" ]; then
   exit 1
 fi
 
-echo "✅ 已确认：$SOURCE_BRANCH → $TARGET_BRANCH（两者都会 push，完成后自动切回 $SOURCE_BRANCH）"
-
 # 当前分支检查
 current_branch=$(git branch --show-current)
 if [ "$current_branch" != "$SOURCE_BRANCH" ]; then
@@ -186,4 +184,4 @@ else
   echo "⚠️ 切换失败，请手动 git checkout $SOURCE_BRANCH"
 fi
 
-echo "=== 🎉 全部完成！$SOURCE_BRANCH（开发分支）和 $TARGET_BRANCH 都已 push，并切回原分支 ==="
+echo "=== 🎉 全部完成！$SOURCE_BRANCH （开发分支）和 $TARGET_BRANCH 都已 push，并切回原分支 ==="
