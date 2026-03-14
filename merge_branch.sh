@@ -1,12 +1,11 @@
 #!/bin/bash
 
-echo "=== 动态分支合并脚本：任意源分支 → 任意目标分支 ==="
+echo "=== 动态分支合并脚本：任意源分支 → 任意目标分支（成功后自动切回源分支） ==="
 
 # ====================== 步骤 0：让用户输入分支名称 ======================
 read -p "请输入源分支名称（当前开发分支，例如 dev）: " SOURCE_BRANCH
 read -p "请输入目标分支名称（要合并到的分支，例如 test）: " TARGET_BRANCH
 
-# 基础校验
 if [ -z "$SOURCE_BRANCH" ] || [ -z "$TARGET_BRANCH" ]; then
   echo "❌ 分支名称不能为空！脚本退出。"
   exit 1
@@ -16,7 +15,7 @@ if [ "$SOURCE_BRANCH" = "$TARGET_BRANCH" ]; then
   exit 1
 fi
 
-echo "✅ 已确认：将从 **$SOURCE_BRANCH** 合并到 **$TARGET_BRANCH**"
+echo "✅ 已确认：将从 **$SOURCE_BRANCH** 合并到 **$TARGET_BRANCH**，完成后自动切回 $SOURCE_BRANCH"
 
 # 当前分支检查
 current_branch=$(git branch --show-current)
@@ -163,6 +162,13 @@ while true; do
   fi
 done
 
-echo "=== 🎉 全部完成！$SOURCE_BRANCH 已成功合并并推送到 $TARGET_BRANCH 分支 ==="
-echo "当前分支仍在 $TARGET_BRANCH"
-echo "如需切回源分支：git checkout $SOURCE_BRANCH"
+# ====================== 步骤 7：成功后自动切换回源分支 ======================
+echo "步骤 7：全部成功！自动切换回开发分支 $SOURCE_BRANCH..."
+git checkout "$SOURCE_BRANCH"
+if [ $? -eq 0 ]; then
+  echo "✅ 已自动切换回 $SOURCE_BRANCH 分支"
+else
+  echo "⚠️ 切换回 $SOURCE_BRANCH 失败（极少见），请手动执行：git checkout $SOURCE_BRANCH"
+fi
+
+echo "=== 🎉 全部流程完成！$SOURCE_BRANCH 已成功合并并推送到 $TARGET_BRANCH，并已切回 $SOURCE_BRANCH ==="
