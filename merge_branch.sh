@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # =============================================
-# Git 合并脚本：dev → test
+# Git 合并脚本：dev → test2
 # 使用说明：
 # 1. 保存为 merge_dev_to_test.sh
 # 2. chmod +x merge_dev_to_test.sh
