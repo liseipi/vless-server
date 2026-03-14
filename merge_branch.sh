@@ -171,4 +171,4 @@ else
   echo "⚠️ 切换回 $SOURCE_BRANCH 失败（极少见），请手动执行：git checkout $SOURCE_BRANCH"
 fi
 
-echo "=== 🎉 全部流程完成！$SOURCE_BRANCH 已成功合并并推送到 $TARGET_BRANCH，并已切回 $SOURCE_BRANCH ==="
+echo "=== 🎉 全部流程完成！$SOURCE_BRANCH 已成功合并并推送到 $TARGET_BRANCH ，并已切回 $SOURCE_BRANCH ==="
